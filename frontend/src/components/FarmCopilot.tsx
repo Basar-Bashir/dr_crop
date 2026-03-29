@@ -84,11 +84,11 @@ export default function FarmCopilot() {
     <section
       id="farm-copilot"
       className="glass-card animate-fade-in-up delay-100"
-      style={{ padding: 24, marginBottom: 20, borderLeft: "4px solid var(--emerald-500)" }}
+      style={{ padding: 24, marginBottom: 20 }}
     >
       <div style={{ marginBottom: 20 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-          <MessageSquare size={20} className="text-emerald-400" />
+          <MessageSquare size={20} className="text-[var(--accent-400)]" />
           <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>
             {t("copilotTitle")}
           </h2>
@@ -154,7 +154,7 @@ export default function FarmCopilot() {
           }}
           aria-pressed={listening}
         >
-          {listening ? <MicOff size={20} className="text-danger" /> : <Mic size={20} className="text-emerald-400" />}
+          {listening ? <MicOff size={20} className="text-danger" /> : <Mic size={20} className="text-[var(--accent-400)]" />}
           <span style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: listening ? "var(--danger)" : "var(--text-dim)" }}>
             {listening ? t("copilotVoiceStop") : t("copilotVoiceStart")}
           </span>
@@ -163,8 +163,8 @@ export default function FarmCopilot() {
 
       {listening && (
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: interim ? 6 : 12 }}>
-          <div className="pulse-dot" style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--emerald-400)" }} />
-          <p style={{ fontSize: 12, color: "var(--emerald-400)", fontWeight: 700, margin: 0 }}>
+          <div className="pulse-dot" style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent-400)" }} />
+          <p style={{ fontSize: 12, color: "var(--accent-400)", fontWeight: 700, margin: 0 }}>
             {t("copilotVoiceListening")}
           </p>
         </div>
@@ -219,14 +219,14 @@ export default function FarmCopilot() {
             marginTop: 20,
             padding: 20,
             borderRadius: 20,
-            background: "rgba(16, 185, 129, 0.03)",
+            background: "rgba(196, 154, 82, 0.03)",
             border: "1px solid var(--border)",
             boxShadow: "inset 0 2px 10px rgba(0,0,0,0.2)"
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-            <Sparkles size={16} className="text-emerald-400" />
-            <p style={{ fontSize: 12, fontWeight: 800, color: "var(--emerald-400)", margin: 0, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            <Sparkles size={16} className="text-[var(--accent-400)]" />
+            <p style={{ fontSize: 12, fontWeight: 800, color: "var(--accent-400)", margin: 0, textTransform: "uppercase", letterSpacing: "0.1em" }}>
               Expert Recommendation
             </p>
           </div>

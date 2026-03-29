@@ -173,7 +173,7 @@ export default function HomePage() {
                     borderRadius: 999,
                     padding: "6px 14px",
                     fontSize: 11,
-                    color: "var(--emerald-400)",
+                    color: "var(--accent-400)",
                     fontWeight: 700,
                     marginBottom: 24,
                     letterSpacing: "0.05em",
@@ -198,7 +198,7 @@ export default function HomePage() {
                   <br />
                   <span
                     style={{
-                      background: "linear-gradient(135deg, var(--emerald-400), var(--emerald-500))",
+                      background: "linear-gradient(135deg, var(--accent-400), var(--accent-500))",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}
@@ -233,7 +233,7 @@ export default function HomePage() {
               >
                 {stats.map(({ icon, valueKey, labelKey }) => (
                   <div key={labelKey} className="stat-card" style={{ flex: "1 1 calc(25% - 12px)", minWidth: 120, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "16px 8px" }}>
-                    <div style={{ color: "var(--emerald-400)", marginBottom: 10, opacity: 0.8 }}>{icon}</div>
+                    <div style={{ color: "var(--accent-400)", marginBottom: 10, opacity: 0.8 }}>{icon}</div>
                     <div
                       style={{
                         fontSize: 18,
@@ -271,7 +271,7 @@ export default function HomePage() {
                       gap: 8
                     }}
                   >
-                    <MapPin size={14} className="text-emerald-400" /> {t("geoNotice")}
+                    <MapPin size={14} className="text-[var(--accent-400)]" /> {t("geoNotice")}
                   </p>
                   <ImageUploader
                     onImageSelected={handleImageSelected}
@@ -367,7 +367,7 @@ export default function HomePage() {
                         style={{
                           fontSize: 10,
                           fontWeight: 800,
-                          color: "var(--emerald-500)",
+                          color: "var(--accent-500)",
                           letterSpacing: "0.15em",
                           marginBottom: 12,
                         }}

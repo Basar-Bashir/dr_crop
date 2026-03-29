@@ -275,7 +275,7 @@ export default function ImageUploader({
                   gap: 12,
                 }}
               >
-                <Loader2 size={40} className="animate-spin text-emerald-400" />
+                <Loader2 size={40} className="animate-spin text-[var(--accent-400)]" />
                 <p style={{ color: "var(--text-primary)", fontSize: 14, fontWeight: 700, letterSpacing: "0.02em" }}>
                   {t("uploadAnalyzing")}
                 </p>
@@ -295,7 +295,7 @@ export default function ImageUploader({
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 20px",
-                color: "var(--emerald-400)",
+                color: "var(--accent-400)",
               }}
             >
               <Upload size={28} />

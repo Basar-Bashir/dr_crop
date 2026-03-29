@@ -32,11 +32,11 @@ export default function WeatherLocationPicker({
       style={{
         padding: 20,
         marginBottom: 16,
-        borderLeft: "4px solid var(--emerald-400)",
+        borderLeft: "4px solid var(--accent-400)",
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-        <CloudSun size={18} className="text-emerald-400" />
+        <CloudSun size={18} className="text-[var(--accent-400)]" />
         <div style={{ fontWeight: 800, fontSize: 15, color: "var(--text-primary)", letterSpacing: "-0.01em" }}>
           {t("weatherLocTitle")}
         </div>

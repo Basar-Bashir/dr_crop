@@ -1,6 +1,6 @@
 import { useLocale } from "@/contexts/LocaleContext";
 import { LOCALES, type Locale } from "@/lib/i18n";
-import { Sprout, Activity } from "lucide-react";
+import { Activity } from "lucide-react";
 
 const LOCALE_LABELS: Record<Locale, string> = {
   en: "EN",
@@ -14,17 +14,29 @@ export default function Header() {
   return (
     <header className="app-header">
       <div className="app-header__inner">
-        <div className="app-header__brand">
-          <div className="app-header__logo animate-pulse-glow" aria-hidden>
-            <Sprout size={22} strokeWidth={2.5} />
+        {/* Left Capsule */}
+        <div className="glass-capsule left-capsule">
+          <div className="app-header__brand">
+            <h1 className="app-header__title">
+              Dr. Crop <span className="title-dot"></span>
+            </h1>
           </div>
-          <div>
-            <h1 className="app-header__title">{t("headerTitle")}</h1>
-            <p className="app-header__subtitle">{t("headerSubtitle")}</p>
-          </div>
+          
+          <nav className="app-header__nav">
+            <a href="#farm-copilot" className="app-header__link">
+              {t("navCopilot")}
+            </a>
+            <a href="#how-it-works" className="app-header__link">
+              {t("navHow")}
+            </a>
+            <a href="#crops" className="app-header__link">
+              {t("navDiseases")}
+            </a>
+          </nav>
         </div>
 
-        <nav className="app-header__nav">
+        {/* Right Capsule */}
+        <div className="glass-capsule glass-capsule-padding">
           <div className="locale-segment" role="group" aria-label="Language">
             {LOCALES.map((loc) => (
               <button
@@ -37,22 +49,12 @@ export default function Header() {
               </button>
             ))}
           </div>
-
-          <a href="#farm-copilot" className="app-header__link">
-            {t("navCopilot")}
-          </a>
-          <a href="#how-it-works" className="app-header__link">
-            {t("navHow")}
-          </a>
-          <a href="#crops" className="app-header__link">
-            {t("navDiseases")}
-          </a>
-          <span className="app-header__divider" aria-hidden />
-          <div className="badge badge-success app-header__badge">
-            <Activity size={12} strokeWidth={3} />
+          
+          <button className="btn-get-started">
+            <Activity size={14} strokeWidth={2.5} />
             {t("badgeOnline")}
-          </div>
-        </nav>
+          </button>
+        </div>
       </div>
     </header>
   );

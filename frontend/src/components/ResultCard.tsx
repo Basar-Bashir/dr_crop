@@ -172,7 +172,7 @@ export default function ResultCard({
         </div>
 
         {geo?.coords && (
-          <p style={{ fontSize: 11, color: "var(--emerald-400)", marginTop: 16, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
+          <p style={{ fontSize: 11, color: "var(--accent-400)", marginTop: 16, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
             <Dna size={12} />
             {t("geoLatLon", { lat: geo.coords.lat.toFixed(2), lon: geo.coords.lon.toFixed(2) })} — {t("geoStatusUsed")}{" "}
             ({geo.source === "manual" ? t("geoSourceManual") : t("geoSourceGps")})
@@ -182,7 +182,7 @@ export default function ResultCard({
         <div style={{ marginTop: 20 }}>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{t("confidenceLabel")}</span>
-            <span style={{ fontSize: 13, fontWeight: 800, color: "var(--emerald-400)" }}>
+            <span style={{ fontSize: 13, fontWeight: 800, color: "var(--accent-400)" }}>
               {confidencePercent}%
             </span>
           </div>
@@ -233,7 +233,7 @@ export default function ResultCard({
       {hasField && fc && (
         <div className="glass-card" style={{ padding: 24 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-            <Thermometer size={18} className="text-emerald-400" />
+            <Thermometer size={18} className="text-[var(--accent-400)]" />
             <h3 style={{ fontSize: 16, fontWeight: 800, color: "var(--text-primary)" }}>
               {t("fieldTitle")}
             </h3>
@@ -258,7 +258,7 @@ export default function ResultCard({
           {hasAirMetrics(aq) && <AirQualityGrid aq={aq!} t={t} />}
           {nonEmpty(yA) && (
             <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-              <div style={{ fontSize: 12, fontWeight: 800, color: "var(--emerald-400)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "var(--accent-400)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                 {t("airAdviceTitle")}
               </div>
               <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0, fontWeight: 500 }}>
@@ -300,9 +300,9 @@ export default function ResultCard({
                   border: "none",
                   cursor: "pointer",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  background: activeTab === tab ? "var(--emerald-600)" : "transparent",
+                  background: activeTab === tab ? "var(--accent-600)" : "transparent",
                   color: activeTab === tab ? "#fff" : "var(--text-muted)",
-                  boxShadow: activeTab === tab ? "0 4px 12px rgba(16, 185, 129, 0.25)" : "none"
+                  boxShadow: activeTab === tab ? "0 4px 12px rgba(196, 154, 82, 0.25)" : "none"
                 }}
               >
                 {tab === "treatment" ? t("tabTreatment") : tab === "prevention" ? t("tabPrevention") : t("tabFertilizer")}
@@ -314,7 +314,7 @@ export default function ResultCard({
             className="animate-fade-in"
             key={activeTab}
             style={{
-              background: "rgba(16, 185, 129, 0.03)",
+              background: "rgba(196, 154, 82, 0.03)",
               border: "1px solid var(--border)",
               borderRadius: 20,
               padding: 20,
@@ -331,7 +331,7 @@ export default function ResultCard({
 
           {recommendation.confidence_note && (
             <div style={{ marginTop: 16, padding: "12px 16px", borderRadius: 12, background: "rgba(255,255,255,0.02)", display: "flex", gap: 10 }}>
-              <Info size={14} className="text-emerald-400 mt-0.5" />
+              <Info size={14} className="text-[var(--accent-400)] mt-0.5" />
               <p style={{ fontSize: 11, color: "var(--text-dim)", fontWeight: 500, lineHeight: 1.5, margin: 0 }}>
                 {recommendation.confidence_note}
               </p>
@@ -341,8 +341,8 @@ export default function ResultCard({
       )}
 
       {recommendation && hasYieldPlan && (
-        <div className="glass-card" style={{ padding: 24, borderLeft: "4px solid var(--emerald-500)" }}>
-          <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--emerald-400)", marginBottom: 6, letterSpacing: "-0.01em" }}>
+        <div className="glass-card" style={{ padding: 24, borderLeft: "4px solid var(--accent-500)" }}>
+          <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--accent-400)", marginBottom: 6, letterSpacing: "-0.01em" }}>
             {t("yieldTitle")}
           </h3>
           <p style={{ fontSize: 11, color: "var(--text-dim)", marginBottom: 20, fontWeight: 600 }}>{t("yieldHint")}</p>
@@ -365,10 +365,10 @@ export default function ResultCard({
             alignItems: "center",
           }}
         >
-          <div style={{ width: 64, height: 64, borderRadius: "50%", background: "var(--success-bg)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--emerald-400)", marginBottom: 16 }}>
+          <div style={{ width: 64, height: 64, borderRadius: "50%", background: "var(--success-bg)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-400)", marginBottom: 16 }}>
             <CheckCircle size={32} strokeWidth={3} />
           </div>
-          <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--emerald-400)", marginBottom: 8 }}>
+          <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--accent-400)", marginBottom: 8 }}>
             {t("healthyCardTitle")}
           </h3>
           <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, maxWidth: 300 }}>
@@ -466,7 +466,7 @@ function FieldGrid({
 function YieldBlock({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
     <div>
-      <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 8, display: "flex", alignItems: "center", gap: 8, color: "var(--emerald-500)" }}>
+      <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 8, display: "flex", alignItems: "center", gap: 8, color: "var(--accent-500)" }}>
         {icon} <span style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}>{title}</span>
       </div>
       <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0, fontWeight: 500 }}>
@@ -492,7 +492,7 @@ function InfoRow({
         style={{
           fontSize: 14,
           fontWeight: 700,
-          color: highlight ? "var(--danger)" : "var(--emerald-400)",
+          color: highlight ? "var(--danger)" : "var(--accent-400)",
           maxWidth: "60%",
           textAlign: "right",
           overflow: "hidden",
