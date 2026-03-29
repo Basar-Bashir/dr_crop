@@ -31,9 +31,34 @@
   --success-bg: #d4f783;
 }
 
-[data-theme="light"] {
-  --bg-primary: #f2f3ec;
-  --bg-secondary: #e8e9e1;
+[data-theme="dark"] {
+  --bg-primary: #2d2a28;
+  --bg-secondary: #363330;
+  --bg-card: #3a3734;
+  --bg-card-hover: #423f3c;
+  --surface: #3a3734;
+  --surface-2: #242220;
+
+  --accent-400: #d4f783;
+  --accent-500: #54504c;
+  --accent-600: #423f3c;
+  --green-glow: rgba(212, 247, 131, 0.04);
+  --green-glow-strong: rgba(212, 247, 131, 0.08);
+
+  --text-primary: #f2f3ec;
+  --text-secondary: #d1d5cb;
+  --text-muted: #a3a69d;
+  --text-dim: #7a7a7a;
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-bright: rgba(255, 255, 255, 0.12);
+
+  --danger: #ff6b6b;
+  --danger-bg: rgba(255, 107, 107, 0.15);
+  --warning: #fbbf24;
+  --warning-bg: rgba(251, 191, 36, 0.15);
+  --success: #d4f783;
+  --success-bg: rgba(212, 247, 131, 0.15);
 }
 
 @theme inline {
@@ -63,6 +88,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::-webkit-scrollbar { width: 6px; }
@@ -475,36 +501,7 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.locale-segment {
-  display: inline-flex;
-  padding: 2px;
-  border-radius: 999px;
-  background: transparent;
-  gap: 2px;
-}
 
-.locale-segment button {
-  border: none;
-  background: transparent;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.locale-segment button[aria-current="true"] {
-  background: #ffffff;
-  color: var(--accent-500);
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.locale-segment button:hover:not([aria-current="true"]) {
-  opacity: 0.8;
-}
 
 .btn-get-started {
   background: #ffffff;
