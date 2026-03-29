@@ -47,6 +47,28 @@ RECOMMEND_KEYS = (
 )
 
 
+def _openai_error_body(resp: httpx.Response) -> str:
+    try:
+        data = resp.json()
+        err = data.get("error")
+        if isinstance(err, dict) and err.get("message"):
+            return str(err["message"])[:400]
+    except Exception:
+        pass
+    return ""
+
+
+def _ensure_llm_ok(resp: httpx.Response) -> None:
+    """Raise a clear RuntimeError on auth failures instead of a generic HTTP status."""
+    if resp.status_code == 401:
+        hint = _openai_error_body(resp)
+        raise RuntimeError(
+            f"LLM API key rejected (401 Unauthorized). {hint} "
+            "Set LLM_API_KEY or OPENAI_API_KEY in backend/.env or in the repository root .env file."
+        )
+    resp.raise_for_status()
+
+
 async def generate_recommendation(
     context: str,
     disease: str,
@@ -86,7 +108,7 @@ async def generate_recommendation(
                 "temperature": 0.3,
             },
         )
-        resp.raise_for_status()
+        _ensure_llm_ok(resp)
         content = resp.json()["choices"][0]["message"]["content"]
 
     try:
@@ -257,7 +279,7 @@ async def generate_copilot_answer(question: str, locale: str) -> str:
                 "temperature": 0.4,
             },
         )
-        resp.raise_for_status()
+        _ensure_llm_ok(resp)
         return (resp.json()["choices"][0]["message"]["content"] or "").strip()
 
 
@@ -265,15 +287,15 @@ def _copilot_fallback_no_key(locale: str) -> str:
     texts = {
         "en": (
             "The farming assistant needs an API key on the server. "
-            "Please ask whoever runs the app to set LLM_API_KEY in backend/.env."
+            "Set LLM_API_KEY or OPENAI_API_KEY in backend/.env or in the repository root .env file, then restart the API."
         ),
         "hi": (
             "फार्मिंग सहायक के लिए सर्वर पर API कुंजी चाहिए। "
-            "कृपया ऐप चलाने वाले से backend/.env में LLM_API_KEY लगाने को कहें।"
+            "backend/.env या रिपोज़िटरी रूट की .env में LLM_API_KEY लगाकर API फिर से चलाएँ।"
         ),
         "ur": (
             "فارمنگ معاون کے لیے سرور پر API کلید درکار ہے۔ "
-            "براہ کرم ایپ چلانے والے سے کہیں کہ backend/.env میں LLM_API_KEY لگائیں۔"
+            "backend/.env یا ریپوزٹری روٹ کی .env میں LLM_API_KEY لگا کر API دوبارہ چلائیں۔"
         ),
     }
     return texts.get(locale, texts["en"])

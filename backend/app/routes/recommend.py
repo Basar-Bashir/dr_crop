@@ -1,6 +1,6 @@
 import asyncio
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from app.models.schemas import RecommendRequest, RecommendResponse
 from app.services.exa_service import search_agriculture_context
@@ -41,9 +41,12 @@ async def get_recommendation(req: RecommendRequest):
         blocks.append("Live air quality (model estimates):\n" + air_text)
     field_context = "\n\n".join(blocks)
 
-    rec = await generate_recommendation(
-        context, req.disease, req.crop, field_context, air_quality
-    )
+    try:
+        rec = await generate_recommendation(
+            context, req.disease, req.crop, field_context, air_quality
+        )
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
 
     return RecommendResponse(
         field_conditions=field_conditions,

@@ -167,7 +167,8 @@ const messagesEn = {
   copilotSend: "Get advice",
   copilotThinking: "Thinking…",
   copilotError: "Could not get advice. Check your connection or try again.",
-  copilotOffline: "The assistant needs the API key on the server. Ask your support person to set LLM_API_KEY in backend/.env.",
+  copilotOffline:
+    "The assistant needs the API key on the server. Set LLM_API_KEY (or OPENAI_API_KEY) in backend/.env or the repository root .env, then restart the API.",
 
   copilotVoiceStart: "Voice",
   copilotVoiceStop: "Stop",
@@ -319,7 +320,8 @@ const messagesHi: Record<MessageKey, string> = {
   copilotSend: "सलाह लें",
   copilotThinking: "सोच रहा है…",
   copilotError: "सलाह नहीं मिली। इंटरनेट जाँचें या फिर कोशिश करें।",
-  copilotOffline: "सहायक के लिए सर्वर पर API कुंजी चाहिए। backend/.env में LLM_API_KEY लगवाएँ।",
+  copilotOffline:
+    "सहायक के लिए सर्वर पर API कुंजी चाहिए। backend/.env या रिपोज़िटरी रूट की .env में LLM_API_KEY लगाकर API फिर चलाएँ।",
 
   copilotVoiceStart: "आवाज़",
   copilotVoiceStop: "रोकें",
@@ -471,7 +473,8 @@ const messagesUr: Record<MessageKey, string> = {
   copilotSend: "مشورہ لیں",
   copilotThinking: "سوچ رہا ہے…",
   copilotError: "مشورہ نہیں ملا۔ انٹرنیٹ چیک کریں یا دوبارہ کوشش کریں۔",
-  copilotOffline: "معاون کے لیے سرور پر API کلید درکار ہے۔ backend/.env میں LLM_API_KEY لگوائیں۔",
+  copilotOffline:
+    "معاون کے لیے سرور پر API کلید درکار ہے۔ backend/.env یا ریپوزٹری روٹ کی .env میں LLM_API_KEY لگا کر API دوبارہ چلائیں۔",
 
   copilotVoiceStart: "آواز",
   copilotVoiceStop: "روکیں",

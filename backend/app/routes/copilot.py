@@ -11,6 +11,8 @@ router = APIRouter()
 async def farm_copilot(req: CopilotRequest):
     try:
         answer = await generate_copilot_answer(req.question, req.locale)
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
     except httpx.HTTPError as e:
         raise HTTPException(
             status_code=503,

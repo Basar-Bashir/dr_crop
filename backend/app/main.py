@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.config import ENV_FILE_PATH, get_settings
+from app.config import ENV_FILE_PATH, ROOT_ENV_FILE_PATH, get_settings
 from app.routes import agro_context, copilot, predict, recommend
 
 settings = get_settings()
@@ -49,9 +49,12 @@ async def health_ready():
     return {
         "status": "ok",
         "llm_api_key_configured": bool(s.llm_api_key and s.llm_api_key.strip()),
-        "env_file_path": str(ENV_FILE_PATH),
-        "env_file_exists": ENV_FILE_PATH.is_file(),
+        "env_file_backend": str(ENV_FILE_PATH),
+        "env_file_backend_exists": ENV_FILE_PATH.is_file(),
+        "env_file_repo_root": str(ROOT_ENV_FILE_PATH),
+        "env_file_repo_root_exists": ROOT_ENV_FILE_PATH.is_file(),
         "llm_base_url": s.llm_base_url,
         "vision_model": s.vision_model,
         "llm_model": s.llm_model,
+        "cors_origins": s.allowed_origins,
     }

@@ -80,8 +80,9 @@ export async function predictDisease(
   return { prediction, recommendation };
 }
 
+/** Farm Copilot uses the Next.js route `/api/copilot` so `LLM_API_KEY` can live in Vercel env or frontend/.env.local (server-only). */
 export async function askFarmCopilot(question: string, locale: Locale): Promise<string> {
-  const res = await fetch(`${API_BASE}/copilot`, {
+  const res = await fetch("/api/copilot", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ question, locale }),

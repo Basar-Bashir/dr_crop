@@ -66,12 +66,10 @@ export default function FarmCopilot() {
       const a = await askFarmCopilot(text, locale);
       setAnswer(a);
     } catch (e) {
-      const msg = e instanceof Error ? e.message : "";
-      setError(
-        msg.toLowerCase().includes("llm") || msg.toLowerCase().includes("api key")
-          ? t("copilotOffline")
-          : t("copilotError")
-      );
+      const msg = e instanceof Error ? e.message : String(e);
+      // Show the real message from /api/copilot (e.g. Vercel env instructions). Do not map "llm"/"api key"
+      // to a generic string — that hid the correct setup steps.
+      setError(msg.trim() || t("copilotError"));
     } finally {
       setLoading(false);
     }
